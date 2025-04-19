@@ -26,9 +26,9 @@
   * 0 MB stacks, 0 MB globals - Memory in use for goroutine stacks and global variables
   * 1 P - Number of logical processors P
 
-* There will be two GCs pausing for 22micros (in my machine)
+* There will be two GCs pausing for 22 micros (in my machine)
 * Running with GOGC=100 means GC running every time heap doubles `GOMAXPROCS=1 GOMEMLIMIT=1GiB GOGC=100 GODEBUG=gctrace=1 go run ./gc/main.go`
   * There will be more frequent GCs even when there is more memory to use
-  * This resulted in 24 GC cycles consuming 629 micros totally
+  * This resulted in 24 GC cycles consuming ~ 300 - 600 micros totally
   * I think same theory applies - Do bulk batch processing instead of more frequent small GCs
   * This also tells go to use more available memory. Otherwise it will limit itself to small amount of memory and run GC every time it doubles. Not optimal
