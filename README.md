@@ -32,3 +32,11 @@
   * This resulted in 24 GC cycles consuming ~ 300 - 600 micros totally
   * I think same theory applies - Do bulk batch processing instead of more frequent small GCs
   * This also tells go to use more available memory. Otherwise it will limit itself to small amount of memory and run GC every time it doubles. Not optimal
+
+* GODEBUG=schedtrace=100 `GOMAXPROCS=12 GOMEMLIMIT=1GiB GOGC=100 GODEBUG=schedtrace=100 go run ./gc/main.go `
+  * Example `SCHED 1361ms: gomaxprocs=12 idleprocs=12 threads=23 spinningthreads=0 needspinning=0 idlethreads=18 runqueue=0 [0 0 0 0 0 0 0 0 0 0 0 0]`
+  * SCHED 410 - Snapshot of scheduler stats 410 millis after program started
+  * idleprocs=0 - Number of idle Ps
+  * threads=3 - Total OS threads created by Go runtime
+  * runqueue=0 - Number of goroutines waiting to be scheduled globally (not asssigned to any P)
+  * [2 0 0 ...] - Local run queue size of P. How many goroutines are ready to run on that P
