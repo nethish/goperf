@@ -13,15 +13,15 @@
   * Third GC run (gc 2)
   * GC was triggered 287 millis after program started
   * GC used 1% of the total available CPU time
-  * 0.009+30+003 ms clock - STW start 0.009 ms, 30 ms concurrent mark and sweep, and 0.003 ms STW end event
-  * 0.009+0.43/3.5/0+0.003 ms cpu
+  * `0.009+30+003 ms` clock - STW start 0.009 ms, 30 ms concurrent mark and sweep, and 0.003 ms STW end event
+  * `0.009+0.43/3.5/0+0.003` ms cpu
     * 0.009 ms — STW start
     * 0.43/3.5/0 ms — concurrent mark/sweep:
       * 0.43 ms in mark assist (mutator doing GC)
       * 3.5 ms in dedicated GC workers
       * 0 ms idle (no unused GC threads)
     * 0.003 ms — STW end
-  * 873->1021->196 MB => Heap Live start, heap grew during GC, and heap live after GC
+  * `873->1021->196 MB` => Heap Live start, heap grew during GC, and heap live after GC
   * Next target GC size is 922
   * 0 MB stacks, 0 MB globals - Memory in use for goroutine stacks and global variables
   * 1 P - Number of logical processors P
